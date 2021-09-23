@@ -1,0 +1,27 @@
+<app-navigationbar></app-navigationbar>
+<div class="fillspace container"><button mat-raised-button class="fill" color="warn" (click)="onViewCart()">View Cart</button></div>
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of products">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>Title-:{{product.title}}</mat-card-title>
+          <mat-card-subtitle>Category-:{{product.category}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="data:image/jpg;base64,{{product.image}}">
+        <mat-card-content>
+          <p>Description-:
+            {{product.description}}
+          </p>
+          <p>Cost-:
+            {{product.cost}}
+          </p>
+          <p>AvailableQuantity
+            {{product.availableQuantity}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="product.availableQuantity<=0" (click)=addToCart(product.productId)>{{(product.availableQuantity>=0)? "Add to cart":"Out Of Stock"}}</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

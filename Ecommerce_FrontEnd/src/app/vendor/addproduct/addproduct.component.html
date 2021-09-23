@@ -1,0 +1,69 @@
+
+<div class="container">
+    <mat-toolbar>
+        <span>{{productService.productForm.controls['productId'].value?"Update Product":"Add Product"}}</span>
+        <span class="fillspace"></span>
+        <button class="btn-dialog-close" color="warn" mat-stroked-button (click)="onClose()" tabindex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <form [formGroup]="productService.productForm" class="product-form" (submit)="onSubmit()">
+        <input matInput formCntrolName="productId" hidden>
+        <mat-grid-list cols="2" rowHeight="300px">
+            <mat-grid-tile>
+                <div class="controles-container">
+                    <mat-form-field class="product-form-input" appearance="fill">
+                        <input matInput placeholder="Title*" formControlName="title">
+                        <mat-error *ngIf="productService.productForm.controls['title'].errors?.required">This
+                            Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="productService.productForm.controls['title'].errors?.pattern">Invalid
+                            Title Name.</mat-error>
+                        <mat-error *ngIf="productService.productForm.controls['title'].errors?.notUniqueTitle">
+                                Title Already Exists.</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field class="product-form-input" appearance="fill">
+                        <input matInput placeholder="Description*" formControlName="description">
+                    </mat-form-field>
+
+                    <mat-form-field class="product-form-input" appearance="fill">
+                        <input matInput placeholder="Category*" formControlName="category">
+                        <mat-error *ngIf="productService.productForm.controls['category'].errors?.required">This
+                            Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="productService.productForm.controls['category'].errors?.pattern">Invalid
+                            Category Name.</mat-error>
+                    </mat-form-field>
+                
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controles-container controles-container-2">
+                   
+                    <mat-form-field class="product-form-input" appearance="fill">
+                        <input matInput placeholder="Cost*" formControlName="cost">
+                        <mat-error *ngIf="productService.productForm.controls['cost'].errors?.required">This
+                            Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="productService.productForm.controls['cost'].errors?.min">Cost Should Be Greater Than Zero.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="product-form-input" appearance="fill">
+                        <input matInput placeholder="AvailableQuantity*" formControlName="availableQuantity">
+                        <mat-error *ngIf="productService.productForm.controls['availableQuantity'].errors?.required">This
+                            Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="productService.productForm.controls['availableQuantity'].errors?.min">AvailableQuantity Should Be Greater Than Zero.</mat-error>
+                    </mat-form-field>
+                    
+                    <mat-label>Product Image </mat-label>
+                    <input placeholder="ProductImage*" type="file" formControlName="image"
+                        (change)="onFileChange($event)">
+                    <input matInput formControlName="vendorID" hidden/>
+                    <div class="button-row">
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="productService.productForm.invalid">Submit</button>
+                        <button mat-raised-button color="primary" type="reset">Reset</button>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>

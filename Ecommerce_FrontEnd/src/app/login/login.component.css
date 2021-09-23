@@ -1,0 +1,30 @@
+.login-card{
+    width:30%;
+    margin-top: 12%;
+    margin-left: 36%;
+}
+
+.login-form-input{
+    width: 100%;
+}
+
+.register-link{
+    margin-left: 10%;
+    margin-top: 10px;
+    font-size: larger;
+}
+
+.login-action{
+    margin-left: 30%;
+}
+
+.cred-error{
+    margin-left: 30%;
+}
+
+.forgetpassword-link{
+    margin-left: 4%;
+    margin-top: 10px;
+    font-size: larger;
+
+}

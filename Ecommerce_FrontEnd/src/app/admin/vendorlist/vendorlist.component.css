@@ -1,0 +1,81 @@
+div.container{
+    margin:20px 40px;
+}
+
+.controles-container{
+    width: 100%;
+    padding-left: 35px;
+}
+
+
+.controles-container>*{
+    width: 100%;
+}
+
+button.btn-dialog-close{
+    margin:430px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+.button-row button{
+    margin:5px;
+}
+
+.fill-remaining-spaces{
+margin:20px 20px;
+}
+
+.mat-column-name{
+    width:150px;
+}
+
+.mat-column-email{
+    width:150px;
+}
+
+.mat-column-gender{
+    width:150px;
+}
+
+.mat-column-mobileNo{
+    width:150px;
+}
+
+.mat-column-dateOfJoining{
+    width:150px;
+}
+
+.mat-column-Actions{
+    width:200px;
+}
+
+.mat-raised-button ~ .mat-raised-button {
+    margin: 10px 10px;
+}
+
+.controles-container-2{
+    margin-top: 35px;
+}
+
+.hide{
+    display: none;
+}
+
+.search-form-field{
+    margin-left: 650px;
+    width:30%;
+}
+
+.mat-column-profileImage{
+    width:150px;
+    height:50px;
+}
+
+.mat-column-image1{
+    margin-top: 10px;
+    width:50px;
+    height:50px;
+}

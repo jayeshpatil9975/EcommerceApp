@@ -1,0 +1,81 @@
+<app-navigationbar></app-navigationbar>
+<mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registerService.registrationForm" class="register-form" (submit)="onSubmit()">
+            <div class="controles-container">
+                <p>
+                    <input matInput formCntrolName="userId" hidden>
+                </p>
+                <p>
+                    <mat-form-field class="register-form-input"  appearance="fill">
+                        <input matInput placeholder="UserName*" formControlName="userName">
+                        <mat-error *ngIf="registerService.registrationForm.controls['userName'].errors?.required">This Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="registerService.registrationForm.controls['userName'].errors?.pattern">Invalid UserName.</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="register-form-input"  appearance="fill">
+                        <input matInput placeholder="Email*" formControlName="email">
+                        <mat-error *ngIf="registerService.registrationForm.controls['email'].errors?.required">This Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="registerService.registrationForm.controls['email'].errors?.email">Enter Valid EmailId.</mat-error>
+                        <mat-error *ngIf="registerService.registrationForm.controls['email'].errors?.notUniqueEmail">EmailId Already Exists.</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="register-form-input"  appearance="fill">
+                        <input matInput placeholder="Password*" type="Password" formControlName="password">
+                        <mat-error *ngIf="registerService.registrationForm.controls['password'].errors?.required">This Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="registerService.registrationForm.controls['password'].errors?.pattern">Password Must Contain Uppercase,Lowercase Letters And Numeric Values Min 4 And Max 8 Characters .</mat-error>
+                      </mat-form-field>
+                </p>   
+                <p>
+                    <mat-form-field class="register-form-input"  appearance="fill">
+                        <input matInput placeholder="ConFirmPassword*" type="password" [errorStateMatcher]="CrossFieldErrorMatcher" formControlName="confirmPassword">
+                        <mat-error *ngIf="registerService.registrationForm.controls['confirmPassword'].errors?.passwordNotMatch">Password And Confirm Passwords Do Not Match</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="register-form-input" appearance="fill">
+                        <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Date Of Birth" formControlName="dateOfBirth">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-radio-group class="register-form-input" formControlName="gender"  appearance="fill">
+                        <mat-radio-button value="Male">Male</mat-radio-button>
+                        <mat-radio-button value="Female">Female</mat-radio-button>
+                      </mat-radio-group>
+                </p>
+                <p>
+                    <mat-form-field class="register-form-input"  appearance="fill">
+                        <input matInput placeholder="MobileNo*" formControlName="mobileNo">
+                        <mat-error *ngIf="registerService.registrationForm.controls['mobileNo'].errors?.required">This Field Is Mandatory.</mat-error>
+                        <mat-error *ngIf="registerService.registrationForm.controls['mobileNo'].errors?.pattern">Enter Valid Mobile Number.</mat-error>
+                      </mat-form-field>
+                </p>
+                <p>
+                    
+                        <mat-label>Profile Image </mat-label>
+                        <input  placeholder="ProfileImage*" type="file" formControlName="profileImage" (change)="onFileChange($event)">
+                     
+                </p>
+                <p>
+                    <input matInput formControlName="role" hidden>
+                    <input matInput formControlName="isActive" hidden>
+                    <input matInput formControlName="createdDate" hidden>
+                    <!-- <img src="data:image/jpg;base64,{{base64textString}}"> -->
+                </p>
+            </div>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" [disabled]="registerService.registrationForm.invalid">Register</button>
+                <button mat-raised-button color="primary" type="reset" >Reset</button>
+                <div class="back-link"><a href="/login">Back</a></div>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+  </mat-card>
+

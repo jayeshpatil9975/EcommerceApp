@@ -1,0 +1,31 @@
+<app-navigationbar></app-navigationbar>
+<mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="loginService.loginForm" class="login-form" (submit)="onLoginSubmit()">
+            <div class="controles-container">
+                <p>
+                    <mat-form-field class="login-form-input" appearance="fill">
+                        <input matInput placeholder="Email*" formControlName="email">
+                        <mat-error *ngIf="loginService.loginForm.controls['email'].errors?.required">This Field Is Mandatory.</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="login-form-input"  appearance="fill">
+                        <input matInput placeholder="Password*" type="Password" formControlName="password">
+                        <mat-error *ngIf="loginService.loginForm.controls['password'].errors?.required">This Field Is Mandatory.</mat-error>
+                      </mat-form-field>
+                </p>   
+            </div>
+            <mat-card-actions class="login-action">
+                <button mat-raised-button color="primary" type="submit" [disabled]="loginService.loginForm.invalid">Login</button>
+                <button mat-raised-button color="primary" type="reset" >Reset</button>
+                <div class="register-link"><a href="/register">Register User</a></div>
+                <div class="forgetpassword-link"><a href="/forgetpassword">Forget Password</a></div>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+    <mat-card-footer class="cred-error"><mat-error *ngIf="loginerror">Enter Valid Credentials.</mat-error></mat-card-footer>
+  </mat-card>

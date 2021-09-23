@@ -1,0 +1,17 @@
+<mat-toolbar *ngIf="currentUser!=null">
+    <p class="fill-space"><a href="/products" >Ecommerce-App</a></p>
+    <p class="fill-space" *ngIf="currentUserRole=='Admin'"><a href="/vendors" *ngIf="currentUserRole=='Admin'">Vendors</a></p>
+    <p class="fill-space" *ngIf="currentUserRole=='Vendor'"><a href="/myproducts" *ngIf="currentUserRole=='Vendor'">My Products</a></p>
+    <p class="fill-space" *ngIf="currentUserRole=='Vendor'"><a href="/vendororders" *ngIf="currentUserRole=='Vendor'">My Orders</a></p>
+    <p class="fill-space" *ngIf="currentUserRole=='Customer'"><a href="/products" *ngIf="currentUserRole=='Customer'">Products</a></p>
+    <p class="fill-space" *ngIf="currentUserRole=='Customer'"><a href="/myorders" *ngIf="currentUserRole=='Customer'">My Orders</a></p>
+    <p class="fill-space"><a (click)="Logout()">Logout</a></p>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="currentUser==null">
+    <p class="fill-space"><a href="/login">Ecommerce-App</a></p>
+    <p class="fill-space"><a href="/register">Registration</a></p>
+    <p class="fill-space"><a href="/forgetpassword">Forget Password</a></p>
+    <!-- <p class="fill-space"><a href="/products">Products</a></p> -->
+</mat-toolbar>
+

@@ -1,0 +1,70 @@
+<app-navigationbar></app-navigationbar>
+<body>
+    <div class="container">
+        <span class="toolbar"><mat-toolbar>Vendor</mat-toolbar></span>
+    </div>
+    <div class="fillspace container"><button mat-raised-button class="fill" color="warn" (click)="onAdd()">Add Vendor</button>
+      <mat-form-field class="search-form-field">
+        <input matInput placeholder="Search" [(ngModel)]="searchkey" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="container fill-remaining-spaces">
+    <mat-table [dataSource]="vendors" class="mat-elevation-z8" matSort>
+            
+        <ng-container matColumnDef="vendorID">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> VendorID </th>
+            <td mat-cell *matCellDef="let vendor"> {{vendor.vendorID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+          <td mat-cell *matCellDef="let vendor"> {{vendor.userName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let vendor"> {{vendor.email}} </td>
+        </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+        <td mat-cell *matCellDef="let vendor"> {{vendor.gender}} </td>
+      </ng-container>
+
+     <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IsActive </th>
+      <td mat-cell *matCellDef="let vendor"> {{vendor.isActive}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </th>
+      <td mat-cell *matCellDef="let vendor"> {{vendor.createdDate|date:"dd-MM-yyyy"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="profileImage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ProfileImage </th>
+      <td mat-cell *matCellDef="let vendor"> <img class="mat-column-image1" src="data:image/jpg;base64,{{vendor.profileImage}}"> </td>
+    </ng-container>
+    
+        <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let vendor"> 
+              <button mat-raised-button color="primary" (click)="onEdit(vendor.vendorID)">Edit</button>
+              <button mat-raised-button color="warn" (click)="onDelete(vendor.vendorID,vendor.userName)">{{vendor.isActive?"Disable":"Enable"}}</button>    
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </mat-table>
+      
+      <mat-paginator [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+      </mat-paginator>
+      </div >
+      </body>

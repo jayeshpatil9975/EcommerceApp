@@ -1,0 +1,54 @@
+<div class="contain">
+<div class="container">
+    <span class="toolbar"><mat-toolbar>Cart Items
+      <button class="btn-dialog-close" color="warn" mat-stroked-button (click)="onClose()" tabindex="-1">
+          <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar>
+    </span>
+
+</div>
+
+<div class="container fill-remaining-spaces">
+<mat-table [dataSource]="carts" class="mat-elevation-z8" matSort>
+        
+    <ng-container matColumnDef="cartId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CartId </th>
+        <td mat-cell *matCellDef="let cart"> {{cart.cartId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
+        <td mat-cell *matCellDef="let cart"> {{cart.product.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+        <td mat-cell *matCellDef="let cart"> {{cart.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalCost">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> TotalCost </th>
+      <td mat-cell *matCellDef="let cart"> Rs.{{cart.product.cost*cart.quantity}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let cart"> 
+          <button mat-raised-button color="primary" (click)="onOrder(cart)">Order Item</button>
+          <button mat-raised-button color="warn" (click)="onDelete(cart.cartId,cart.product.title)">Remove</button>    
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </mat-table>
+  
+  <mat-paginator [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+  </div >
+</div>
+  

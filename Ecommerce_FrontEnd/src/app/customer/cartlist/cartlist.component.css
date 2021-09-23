@@ -1,0 +1,33 @@
+div.container{
+    margin:20px 20px;
+}
+
+div.contain{
+    max-height: 50%;
+}
+
+button.btn-dialog-close{
+    margin-left:60%;
+}
+
+.button-row button{
+    margin:5px;
+}
+
+
+.mat-column-productName{
+    width:150px;
+}
+
+.mat-column-quantity{
+    width:100px;
+}
+
+.mat-column-totalCost{
+    width:100px;
+}
+
+.search-form-field{
+    margin-left: 60%;
+    width:30%;
+}
